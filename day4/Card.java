@@ -3,7 +3,7 @@ package day4;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Card {
+public class Card implements Cloneable{
     private int cardNr;
     private int[] leftPart;
     private int[] rightPart;
@@ -49,11 +49,30 @@ public class Card {
         return this.winningNumberMatches > 0 ? Math.pow(2, this.winningNumberMatches - 1) : 0;
     }
 
+    public double getWinningNumbers() {
+        return this.winningNumberMatches;
+    }
+
+    public int getCardNr() {
+        return this.cardNr;
+    }
+
     private int[] parseNumbers(String input) {
         return Pattern.compile("\\s+")
                 .splitAsStream(input)
                 .mapToInt(Integer::parseInt)
                 .toArray();
+    }
+
+    @Override
+    public Card clone() {
+        Card card = null;
+        try {
+            card = (Card) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return card;
     }
 
 }
