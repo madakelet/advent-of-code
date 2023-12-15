@@ -14,8 +14,11 @@ public class Main {
         String filePath = "day11/input.txt";
         readToList(filePath);
         char[][] sky = createSky();
-        expandSky(true);
-        expandSky(false);
+        //expandSky(true, 1);
+        //expandSky(false, 1);
+        //System.out.println("distances: " + measureDistances());
+        expandSky(true, 1000000);
+        expandSky(false, 1000000);
         System.out.println("distances: " + measureDistances());
     }
 
@@ -57,7 +60,7 @@ public class Main {
         }
     }
 
-    public static void expandSky(boolean isHorizontal) {
+    public static void expandSky(boolean isHorizontal, int amountToExpand) {
         List<Integer> empties = new ArrayList<>();
         int length = isHorizontal ? lines.get(0).length() : lines.size();
         int innerLength = isHorizontal ? lines.size() : lines.get(0).length();
@@ -96,9 +99,9 @@ public class Main {
                 }
             }
             if (isHorizontal) {
-                galaxy.y += numbersToExpand;
+                galaxy.y += numbersToExpand * amountToExpand;
             } else {
-                galaxy.x += numbersToExpand;
+                galaxy.x += numbersToExpand * amountToExpand;
             }
         }
     }
