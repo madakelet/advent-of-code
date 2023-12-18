@@ -6,14 +6,14 @@ import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Main {
+public class Day8 {
     public static String instructions;
     public static List<String> names = new ArrayList<>();
     public static List<String> lefts = new ArrayList<>();
     public static List<String> rights = new ArrayList<>();
 
     public static void main(String[] args) {
-        readToNodesArray("day8/input.txt");
+        readToNodesArray("2023/day8/input.txt");
         boolean found = false;
         int count = 1;
         int charAt = 0;

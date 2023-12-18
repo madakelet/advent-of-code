@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Main {
+public class Day9 {
     public static List<List<Integer>> list = new ArrayList<>();
 
     public static void main(String[] args) {
-        readToArray("day9/input.txt");
+        readToArray("2023/day9/input.txt");
         int result = 0;
         for (List<Integer> numbers : list) {
             result += getResult(numbers);

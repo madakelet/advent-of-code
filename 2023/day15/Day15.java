@@ -9,13 +9,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 
-public class Main {
+public class Day15 {
 
     public static List<String> strings = new ArrayList<>();
     public static Map<Integer, Map<String, Integer>> boxesMap = new HashMap<>();
 
     public static void main(String[] args) {
-        readToStringsArray("day15/input.txt");
+        readToStringsArray("2023/day15/input.txt");
         int sum = 0;
         for (String currentString : strings) {
             processLabel(currentString);

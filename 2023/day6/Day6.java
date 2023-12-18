@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class Main {
+public class Day6 {
 
     public static int[] times;
     public static int[] distances;
@@ -15,7 +15,7 @@ public class Main {
     public static long sumOfConcatenated;
 
     public static void main(String[] args) {
-        String filePath = "day6/input.txt";
+        String filePath = "2023/day6/input.txt";
         collectInputToArray(filePath);
         calculatePossibleWins();
         System.out.println("Possible wins multiplied = " + possibleWinsMultiplied);

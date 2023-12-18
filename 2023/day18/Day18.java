@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class Day18 {
     public static List<Point> points = new ArrayList<>();
     public static int currentX = 0;
     public static int currentY = 0;
@@ -18,7 +18,7 @@ public class Main {
     public static int secondCurrentY = 0;
 
     public static void main(String[] args) {
-        readFromFile("day18/input.txt");
+        readFromFile("2023/day18/input.txt");
         System.out.println("Pick's formula: " + calculatePicksFormula(points, boundary));
         System.out.println("Pick's formula part 2: " + calculatePicksFormula(secondPoints, secondBoundary));
 

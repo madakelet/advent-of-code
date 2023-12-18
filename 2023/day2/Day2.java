@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Main {
+public class Day2 {
 
     public static void main(String[] args) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("day2/input.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("2023/day2/input.txt"));
             String line;
             int sum = 0;
             int powerSum = 0;

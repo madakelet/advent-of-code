@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Main {
+public class Day7 {
 
     public static List<Hand> hands;
 
     public static void main(String[] args) {
         long sum = 0;
         hands = new ArrayList<>();
-        createHansArrayFromInput("day7/input.txt");
+        createHansArrayFromInput("2023/day7/input.txt");
         Collections.sort(hands);
         int ranking = 1;
         for (Hand hand : hands) {

@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Main {
+public class Day13 {
     public static List<Pattern> patterns = new ArrayList<>();
 
     public static void main(String[] args) {
-        createPatternsArray("day13/input.txt");
+        createPatternsArray("2023/day13/input.txt");
     }
 
     public static void createPatternsArray(String filePath) {

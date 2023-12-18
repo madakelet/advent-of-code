@@ -4,9 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Main {
+public class Day3 {
     public static void main(String[] args) {
-        String[] lines = readInputFromFile("day3/input.txt");
+        String[] lines = readInputFromFile("2023/day3/input.txt");
         EngineFixer engineFixer = new EngineFixer(lines);
         engineFixer.sumAdjecents();
     }
