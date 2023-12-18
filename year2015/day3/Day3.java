@@ -35,6 +35,41 @@ public class Day3 {
             }
         }
         System.out.println("Part 1: " + visited.size());
+        visited.clear();
+
+        Point santa = new Point(0, 0);
+        Point roboSanta = new Point(0, 0);
+        visited.add(new Point(0, 0));
+        for (int i = 0; i < directions.length(); i++) {
+            char direction = directions.charAt(i);
+            Point point;
+            if (i % 2 == 0) {
+                point = santa;
+            } else {
+                point = roboSanta;
+            }
+            switch (direction) {
+                case '^':
+                    point.y++;
+                    break;
+                case 'v':
+                    point.y--;
+                    break;
+                case '>':
+                    point.x++;
+                    break;
+                case '<':
+                    point.x--;
+                    break;
+                default:
+                    break;
+            }
+            point = new Point(point.x, point.y);
+            if (!visited.contains(point)) {
+                visited.add(point);
+            }
+        }
+        System.out.println("Part 2: " + visited.size());
     }
 
     public static String readFromFile(String path) {
@@ -54,8 +89,8 @@ public class Day3 {
     }
 
     public static class Point {
-        int x;
-        int y;
+        public int x;
+        public int y;
 
         public Point(int x, int y) {
             this.x = x;
