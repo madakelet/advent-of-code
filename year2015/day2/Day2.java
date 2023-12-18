@@ -10,17 +10,20 @@ public class Day2 {
         String filePath = "year2015/day2/input.txt";
         String lines = readFromFile(filePath);
         int sum = 0;
-        for(String line : lines.split("\n")) {
+        int totalRibbon = 0;
+        for (String line : lines.split("\n")) {
             String[] dimensions = line.split("x");
             int l = Integer.parseInt(dimensions[0]);
             int w = Integer.parseInt(dimensions[1]);
             int h = Integer.parseInt(dimensions[2]);
-            int area = 2*l*w + 2*w*h + 2*h*l;
-            int slack = Math.min(Math.min(l*w, w*h), h*l);
+            int area = 2 * l * w + 2 * w * h + 2 * h * l;
+            int slack = Math.min(Math.min(l * w, w * h), h * l);
             sum += area + slack;
-            System.out.println("Dimensions: " + l + "x" + w + "x" + h + " Area: " + area + " Slack: " + slack);
+            int ribbon = l * w * h + 2 * Math.min(Math.min(l + w, w + h), h + l);
+            totalRibbon += ribbon;
         }
         System.out.println("Part 1: " + sum);
+        System.out.println("Part 2: " + totalRibbon);
     }
 
     public static String readFromFile(String filePath) {
