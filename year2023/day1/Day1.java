@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class Day1 {
     public static void main(String[] args) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("2023/day1/input.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("year2023/day1/input.txt"));
             String line;
             int sum = 0;
             while ((line = reader.readLine()) != null) {

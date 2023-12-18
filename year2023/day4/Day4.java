@@ -9,7 +9,7 @@ import java.util.ListIterator;
 
 public class Day4 {
     public static void main(String[] args) {
-        String[] lines = readInputFromFile("2023/day4/test.txt");
+        String[] lines = readInputFromFile("year2023/day4/test.txt");
         List<Card> cards = new ArrayList<>();
         int sum = 0;
         for (String cardLine : lines) {

@@ -15,7 +15,7 @@ public class Day15 {
     public static Map<Integer, Map<String, Integer>> boxesMap = new HashMap<>();
 
     public static void main(String[] args) {
-        readToStringsArray("2023/day15/input.txt");
+        readToStringsArray("year2023/day15/input.txt");
         int sum = 0;
         for (String currentString : strings) {
             processLabel(currentString);

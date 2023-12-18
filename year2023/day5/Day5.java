@@ -12,7 +12,7 @@ public class Day5 {
     public static List<Long> numbersToFind = new ArrayList<>();
 
     public static void main(String[] args) {
-        readFromInput("2023/day5/input.txt");
+        readFromInput("year2023/day5/input.txt");
         System.out.println(Collections.min(numbersToFind));
     }
 

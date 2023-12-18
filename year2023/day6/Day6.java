@@ -15,7 +15,7 @@ public class Day6 {
     public static long sumOfConcatenated;
 
     public static void main(String[] args) {
-        String filePath = "2023/day6/input.txt";
+        String filePath = "year2023/day6/input.txt";
         collectInputToArray(filePath);
         calculatePossibleWins();
         System.out.println("Possible wins multiplied = " + possibleWinsMultiplied);

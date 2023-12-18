@@ -13,7 +13,7 @@ public class Day8 {
     public static List<String> rights = new ArrayList<>();
 
     public static void main(String[] args) {
-        readToNodesArray("2023/day8/input.txt");
+        readToNodesArray("year2023/day8/input.txt");
         boolean found = false;
         int count = 1;
         int charAt = 0;

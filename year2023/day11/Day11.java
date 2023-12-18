@@ -11,7 +11,7 @@ public class Day11 {
     public static List<Galaxy> galaxies = new ArrayList<>();
 
     public static void main(String[] args) {
-        String filePath = "2023/day11/input.txt";
+        String filePath = "year2023/day11/input.txt";
         readToList(filePath);
         char[][] sky = createSky();
         //expandSky(true, 1);

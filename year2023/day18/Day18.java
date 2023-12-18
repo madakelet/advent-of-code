@@ -18,7 +18,7 @@ public class Day18 {
     public static int secondCurrentY = 0;
 
     public static void main(String[] args) {
-        readFromFile("2023/day18/input.txt");
+        readFromFile("year2023/day18/input.txt");
         System.out.println("Pick's formula: " + calculatePicksFormula(points, boundary));
         System.out.println("Pick's formula part 2: " + calculatePicksFormula(secondPoints, secondBoundary));
 

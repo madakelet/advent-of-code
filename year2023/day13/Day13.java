@@ -10,7 +10,7 @@ public class Day13 {
     public static List<Pattern> patterns = new ArrayList<>();
 
     public static void main(String[] args) {
-        createPatternsArray("2023/day13/input.txt");
+        createPatternsArray("year2023/day13/input.txt");
     }
 
     public static void createPatternsArray(String filePath) {

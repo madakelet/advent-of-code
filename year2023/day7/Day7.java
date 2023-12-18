@@ -14,7 +14,7 @@ public class Day7 {
     public static void main(String[] args) {
         long sum = 0;
         hands = new ArrayList<>();
-        createHansArrayFromInput("2023/day7/input.txt");
+        createHansArrayFromInput("year2023/day7/input.txt");
         Collections.sort(hands);
         int ranking = 1;
         for (Hand hand : hands) {

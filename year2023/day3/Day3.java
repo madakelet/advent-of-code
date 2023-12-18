@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Day3 {
     public static void main(String[] args) {
-        String[] lines = readInputFromFile("2023/day3/input.txt");
+        String[] lines = readInputFromFile("year2023/day3/input.txt");
         EngineFixer engineFixer = new EngineFixer(lines);
         engineFixer.sumAdjecents();
     }
