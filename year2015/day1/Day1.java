@@ -8,7 +8,6 @@ public class Day1 {
         String input = readFile("year2015/day1/input.txt");
         int floor = 0;
         int counter = 1;
-        boolean found = false;
         for(char c : input.toCharArray()) {
             if(c == '(') {
                 floor++;
@@ -17,7 +16,6 @@ public class Day1 {
             }
             if(floor == -1) {
                 System.out.println("First basement: " + counter);
-                found = true;
             }
             counter++;
         }
