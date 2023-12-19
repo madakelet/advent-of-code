@@ -1,6 +1,7 @@
 package year2015.day13;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +11,7 @@ public class Day13 {
     static Map<String, Map<String, Integer>> happinessMap = new HashMap<>();
 
     public static void main(String[] args) {
-        String lines = utils.ReadFile.readFromFile("year2015/day13/input.txt");
+        String lines = utils.ReadFile.readFromFile("year2015/day13/test.txt");
         processLines(lines);
         List<String> people = new ArrayList<>(happinessMap.keySet());
         List<List<String>> permutations = generatePermutations(people);
@@ -61,28 +62,34 @@ public class Day13 {
     }
 
     static void permute(int n, List<String> people, List<List<String>> result) {
-        if (n == 0) {
+        if (n == 1) {
             result.add(new ArrayList<>(people));
             return;
         }
 
-        for (int i = 0; i < n; i++) {
-            Collections.swap(people, i, n);
+        for (int i = 0; i < n - 1; i++) {
             permute(n - 1, people, result);
-            Collections.swap(people, i, n);
+            if (n % 2 == 0) {
+                Collections.swap(people, i, n - 1);
+            } else {
+                Collections.swap(people, 0, n - 1);
+            }
         }
+        permute(n - 1, people, result);
     }
 
     static int calculateHappiness(List<String> people) {
+        System.out.println(Arrays.toString(people.toArray()));
         int happiness = 0;
         int i = 0;
         while(i < people.size()) {
             String from = people.get(i);
             String to = people.get((i + 1) % people.size());
+            //System.out.println(from + " -> " + to + " = " + happinessMap.get(from).get(to));
             happiness += happinessMap.get(from).get(to);
-            happiness += happinessMap.get(to).get(from);
             i++;
         }
-        return happiness / 2;
+        System.out.println("Happiness: " + happiness);
+        return happiness;
     }
 }
