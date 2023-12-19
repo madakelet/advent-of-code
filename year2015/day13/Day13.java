@@ -11,7 +11,7 @@ public class Day13 {
     static Map<String, Map<String, Integer>> happinessMap = new HashMap<>();
 
     public static void main(String[] args) {
-        String lines = utils.ReadFile.readFromFile("year2015/day13/test.txt");
+        String lines = utils.ReadFile.readFromFile("year2015/day13/input.txt");
         processLines(lines);
         List<String> people = new ArrayList<>(happinessMap.keySet());
         List<List<String>> permutations = generatePermutations(people);
@@ -22,7 +22,18 @@ public class Day13 {
                 maxHappiness = happiness;
             }
         }
-        System.out.println(maxHappiness);
+        System.out.println("Part 1: " + maxHappiness);
+        addNewPerson("Me");
+        people = new ArrayList<>(happinessMap.keySet());
+        permutations = generatePermutations(people);
+        maxHappiness = 0;
+        for (List<String> permutation : permutations) {
+            int happiness = calculateHappiness(permutation);
+            if (happiness > maxHappiness) {
+                maxHappiness = happiness;
+            }
+        }
+        System.out.println("Part 2: " + maxHappiness);
     }
 
     static void processLines(String lines) {
@@ -79,7 +90,6 @@ public class Day13 {
     }
 
     static int calculateHappiness(List<String> people) {
-        System.out.println(Arrays.toString(people.toArray()));
         int happiness = 0;
         int i = 0;
         while(i < people.size()) {
@@ -89,7 +99,16 @@ public class Day13 {
             happiness += happinessMap.get(from).get(to);
             i++;
         }
-        System.out.println("Happiness: " + happiness);
         return happiness;
+    }
+
+    static void addNewPerson(String person) {
+        for (String from : happinessMap.keySet()) {
+            happinessMap.get(from).put(person, 0);
+        }
+        happinessMap.put(person, new HashMap<>());
+        for (String to : happinessMap.keySet()) {
+            happinessMap.get(person).put(to, 0);
+        }
     }
 }
