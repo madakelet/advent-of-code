@@ -10,10 +10,11 @@ import javax.imageio.stream.ImageOutputStream;
 import java.awt.Graphics2D;
 
 public class Day18 {
-    static Light[][] lights = new Light[100][100];
+    static Light[][] lights;
 
     public static void main(String[] args) {
         String lines = utils.ReadFile.readFromFile("year2015/day18/input.txt");
+        lights = new Light[100][100];
         processLines(lines);
         for (int i = 0; i < 100; i++) {
             // BufferedImage image = createImage(lights.length);
@@ -63,7 +64,9 @@ public class Day18 {
                         light.nextValue = '.';
                     }
                 }
-
+                if(row == 0 && col == 0 || row == 0 && col == 99 || row == 99 && col == 0 || row == 99 && col == 99) {
+                    light.nextValue = '#';
+                }
             }
         }
         changeToNext();
@@ -111,26 +114,22 @@ public class Day18 {
     }
 
     private static BufferedImage createImage(int gridSize) {
-        // Create an image of the desired size
-        int newWidth = 800; // Change this to your preferred width
-        int newHeight = 800; // Change this to your preferred height
+        int newWidth = 800; 
+        int newHeight = 800;
         BufferedImage image = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = image.createGraphics();
 
-        // Draw grid with larger pixels based on the Light state
         for (int i = 0; i < gridSize; i++) {
             for (int j = 0; j < gridSize; j++) {
                 if (lights[i][j].value == '#') {
-                    g.setColor(Color.BLACK); // Light is on
+                    g.setColor(Color.BLACK); 
                 } else {
-                    g.setColor(Color.WHITE); // Light is off
+                    g.setColor(Color.WHITE); 
                 }
 
-                // Calculate the coordinates in the larger image
                 int x = i * (newWidth / gridSize);
                 int y = j * (newHeight / gridSize);
 
-                // Draw a larger pixel for each light
                 g.fillRect(x, y, newWidth / gridSize, newHeight / gridSize);
             }
         }
