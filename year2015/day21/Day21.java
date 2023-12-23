@@ -184,9 +184,8 @@ public class Day21 {
     }
     static boolean canWinFight(int playerDamage, int playerArmor) {
         initDefaultStats();
-        int round = 1;
         while (true) {
-            //System.out.println("Boss HP: " + bossHP + " Player HP: " + playerHP + " Round: " + round);
+            //System.out.println("Boss HP: " + bossHP + " Player HP: " + playerHP);
             bossHP -= Math.max(1, playerDamage - bossArmor);
             if (bossHP <= 0) {
                 //System.out.println("Player wins");
@@ -197,7 +196,6 @@ public class Day21 {
                 //System.out.println("Boss wins");
                 return false;
             }
-            round++;
         }
     }
 
