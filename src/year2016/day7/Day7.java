@@ -1,5 +1,8 @@
 package year2016.day7;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import utils.ReadFile;
 
 public class Day7 {
@@ -10,11 +13,15 @@ public class Day7 {
 
     static void processLines(String lines) {
         int sum = 0;
+        int sumPartTwo = 0;
         for (String line : lines.split("\n")) {
             if (ipSupportsTls(line))
                 sum++;
+            if (ipSupportsSsl(line))
+                sumPartTwo++;
         }
         System.out.println("Part 1: " + sum);
+        System.out.println("Part 2: " + sumPartTwo);
     }
 
     static boolean ipSupportsTls(String line) {
@@ -35,6 +42,29 @@ public class Day7 {
         return evenContainsPair;
     }
 
+    static boolean ipSupportsSsl(String line) {
+        line = line.replace("[", "-");
+        line = line.replace("]", "-");
+
+        int i = 0;
+
+        StringBuilder outers = new StringBuilder();
+        StringBuilder inners = new StringBuilder();
+
+        for (String ipString : line.split("-")) {
+            if (i % 2 == 0) {
+                outers.append(ipString).append("-");
+            } else if (i % 2 == 1) {
+                inners.append(ipString).append("-");
+            }
+            i++;
+        }
+
+        List<String> sandwiches = sandwichesList(outers.toString());
+        
+        return containsBoth(sandwiches, inners.toString());
+    }
+
     static boolean containsDoublePair(String sequence) {
         int i = 0;
         boolean contains = false;
@@ -46,6 +76,33 @@ public class Day7 {
             }
             i++;
         }
+        return contains;
+    }
+
+    static List<String> sandwichesList(String sequence) {
+        List<String> sandwiches = new ArrayList<>();
+        int i = 0;
+        while (i < sequence.length() - 2) {
+            if (sequence.charAt(i) == sequence.charAt(i + 2) &&
+                    sequence.charAt(i) != sequence.charAt(i + 1) &&
+                    sequence.charAt(i + 1) != '-') {
+                StringBuilder builder = new StringBuilder();
+                builder.append(sequence.charAt(i + 1)).append(sequence.charAt(i)).append(sequence.charAt(i + 1));
+                sandwiches.add(builder.toString());
+            }
+            i++;
+        }
+        return sandwiches;
+    }
+
+    static boolean containsBoth(List<String> sandwiches, String inners) {
+        boolean contains = false;
+        for(String sandwich : sandwiches) {
+            if(inners.contains(sandwich)) {
+                contains = true;
+            }
+        }
+
         return contains;
     }
 }
