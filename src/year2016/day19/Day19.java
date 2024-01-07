@@ -1,8 +1,5 @@
 package year2016.day19;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Day19 {
 
     static int getLastStanding(int elvesNr) {
