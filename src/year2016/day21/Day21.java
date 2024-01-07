@@ -34,14 +34,14 @@ public class Day21 {
         return new String(charArray);
     }
 
-    static String rotate(String input, String operation) {
+    static String rotate(String input, String operation, boolean reverse) {
         String[] splitted = operation.split(" ");
         if (operation.contains("left")) {
-            return rotateLeft(input, splitted[2]);
+            return reverse ? rotateRight(input, splitted[2]) : rotateLeft(input, splitted[2]);
         } else if (operation.contains("right")) {
-            return rotateRight(input, splitted[2]);
+            return reverse ? rotateLeft(input, splitted[2]) : rotateRight(input, splitted[2]);
         } else {
-            return rotateBasedOnPosition(input, splitted[splitted.length - 1]);
+            return rotateBasedOnPosition(input, splitted[splitted.length - 1], reverse);
         }
     }
 
@@ -57,10 +57,12 @@ public class Day21 {
         return input.substring(input.length() - steps) + input.substring(0, input.length() - steps);
     }
 
-    static String rotateBasedOnPosition(String input, String target) {
+    static String rotateBasedOnPosition(String input, String target, boolean reverse) {
         int index = input.indexOf(target);
         int rotateSteps = 1 + index + (index >= 4 ? 1 : 0);
-        return rotateRight(input, Integer.toString(rotateSteps));
+        return reverse ? rotateLeft(input, Integer.toString(rotateSteps))
+                : rotateRight(input, Integer.toString(rotateSteps));
+
     }
 
     static String reverseSubString(String input, String operation) {
@@ -77,35 +79,58 @@ public class Day21 {
         return before + reversed.toString() + after;
     }
 
-    static String movePosition(String input, String operation) {
+    static String move(String input, String operation, boolean reverse) {
         String[] splitted = operation.split(" ");
         int sourceIndex = Integer.parseInt(splitted[2]);
         int destinationIndex = Integer.parseInt(splitted[splitted.length - 1]);
-        char removedChar = input.charAt(sourceIndex);
-        String stringWithoutChar = input.substring(0, sourceIndex) + input.substring(sourceIndex + 1);
+        if (reverse) {
+            return movePosition(input, destinationIndex, sourceIndex);
+        } else {
+            return movePosition(input, sourceIndex, destinationIndex);
+        }
+    }
+
+    static String movePosition(String str, int sourceIndex, int destinationIndex) {
+        char removedChar = str.charAt(sourceIndex);
+        String stringWithoutChar = str.substring(0, sourceIndex) + str.substring(sourceIndex + 1);
 
         return stringWithoutChar.substring(0, destinationIndex) + removedChar
                 + stringWithoutChar.substring(destinationIndex);
-
     }
 
     public static void main(String[] args) {
         String lines = ReadFile.readFromFile("src/year2016/day21/input.txt");
         porcessLines(lines);
         String input = "abcdefgh";
-        for(String operation : operations) {
-            if(operation.contains("swap")) {
+        for (String operation : operations) {
+            if (operation.contains("swap")) {
                 input = swap(input, operation);
-            } else if(operation.contains("rotate")) {
-                input = rotate(input, operation);
-            } else if(operation.contains("reverse")) {
+            } else if (operation.contains("rotate")) {
+                input = rotate(input, operation, false);
+            } else if (operation.contains("reverse")) {
                 input = reverseSubString(input, operation);
-            } else if(operation.contains("move")) {
-                input = movePosition(input, operation);
+            } else if (operation.contains("move")) {
+                input = move(input, operation, false);
             } else {
                 System.out.println("Not valid operation: " + operation);
             }
         }
         System.out.println("Part 1: " + input);
+        input = "fbgdceah";
+        for (int i = operations.size() - 1; i >= 0; i--) {
+            String operation = operations.get(i);
+            if (operation.contains("swap")) {
+                input = swap(input, operation);
+            } else if (operation.contains("rotate")) {
+                input = rotate(input, operation, true);
+            } else if (operation.contains("reverse")) {
+                input = reverseSubString(input, operation);
+            } else if (operation.contains("move")) {
+                input = move(input, operation, true);
+            } else {
+                System.out.println("Not valid operation: " + operation);
+            }
+        }
+        System.out.println("Part 2: " + input);
     }
 }
