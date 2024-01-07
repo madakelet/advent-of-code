@@ -21,7 +21,7 @@ public class Day20 {
 
     static void findSmallestIp(int index) {
         //System.out.println("checking: " + mins.get(index) + "-" + maxes.get(index));
-        long min = mins.get(index);
+        //long min = mins.get(index);
         long max = maxes.get(index);
         boolean found = false;
         int i = 0;
