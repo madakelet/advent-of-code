@@ -31,7 +31,7 @@ public class Day11 {
 
     static void doInstructions() {
         for (int i = 0; i < instructions.size(); i++) {
-            // System.out.println("Executin line: " + instructions.get(i));
+            //System.out.println("Executin line: " + instructions.get(i));
             String[] parts = instructions.get(i).split(" ");
             switch (parts[0]) {
                 case "cpy":
