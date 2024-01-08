@@ -120,22 +120,25 @@ public class Day24 {
         }
     }
 
-    static int pathDistance(Character[] path) {
+    static int pathDistance(Character[] path, boolean partOne) {
         int distance = 0;
         for (int i = 0; i < path.length - 1; i++) {
             distance += distances.get(path[i]).get(path[i + 1]);
         }
+        if (!partOne) {
+            distance += distances.get(path[path.length - 1]).get('0');
+        }
         return distance;
     }
 
-    static Character[] findShortestPath() {
+    static Character[] findShortestPath(boolean partOne) {
         Character[] points = distances.keySet().toArray(Character[]::new);
         List<Character[]> paths = Permutations.permutations(points);
         Character[] shortestPath = null;
         int minDistance = Integer.MAX_VALUE;
         for (Character[] path : paths) {
             if (path[0] == '0') {
-                int distance = pathDistance(path);
+                int distance = pathDistance(path, partOne);
                 if (distance < minDistance) {
                     minDistance = distance;
                     shortestPath = path;
@@ -149,9 +152,12 @@ public class Day24 {
         String lines = ReadFile.readFromFile("src/year2016/day24/input.txt");
         processLines(lines);
         findPaths();
-        Character[] shortestPath = findShortestPath();
-        int shortestDistance = pathDistance(shortestPath);
+        Character[] shortestPath = findShortestPath(true);
+        int shortestDistance = pathDistance(shortestPath, true);
         System.out.println("Shortest path: " + Arrays.toString(shortestPath) + " distance: " + shortestDistance);
+        shortestPath = findShortestPath(false);
+        shortestDistance = pathDistance(shortestPath, false);
+        System.out.println("Shortest path back to 0: " + Arrays.toString(shortestPath) + " distance: " + shortestDistance);
     }
 
 }
