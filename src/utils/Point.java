@@ -4,16 +4,36 @@ import java.util.Objects;
 
 public class Point {
     public int x, y;
+    public char value;
+    public boolean visited;
 
     public Point() {
         this.x = 0;
         this.y = 0;
+        visited = false;
     }
 
     public Point(int x, int y) {
         this();
         this.x = x;
         this.y = y;
+        visited = false;
+    }
+
+    /**
+     * Constructs a new Point object with the specified coordinates and value.
+     *
+     * @param x     the x-coordinate of the point
+     * @param y     the y-coordinate of the point
+     * @param value the value associated with the point
+     */
+
+    public Point(int x, int y, char value) {
+        this();
+        this.x = x;
+        this.y = y;
+        this.value = value;
+        visited = false;
     }
 
     @Override

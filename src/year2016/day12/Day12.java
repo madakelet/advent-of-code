@@ -34,12 +34,12 @@ public class Day12 {
                 Point current = queue.poll();
 
                 // if (current.equals(target)) {
-                //     System.out.println("Part 1: " + steps);
-                //     return 0;
+                // System.out.println("Part 1: " + steps);
+                // return 0;
                 // }
-                if(steps == 50) {
-                System.out.println("Part 2: " + visited.size());
-                return 0;
+                if (steps == 50) {
+                    System.out.println("Part 2: " + visited.size());
+                    return 0;
                 }
                 for (int[] dir : directions) {
                     int newX = current.x + dir[0];

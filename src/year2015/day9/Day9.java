@@ -10,7 +10,7 @@ public class Day9 {
     public static Map<String, Map<String, Integer>> distances = new HashMap<>();
 
     public static void main(String[] args) {
-        String lines = utils.ReadFile.readFromFile("year2015/day9/input.txt");
+        String lines = utils.ReadFile.readFromFile("src/year2015/day9/input.txt");
         for (String line : lines.split("\n")) {
             processLine(line);
         }
