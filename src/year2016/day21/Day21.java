@@ -60,9 +60,21 @@ public class Day21 {
     static String rotateBasedOnPosition(String input, String target, boolean reverse) {
         int index = input.indexOf(target);
         int rotateSteps = 1 + index + (index >= 4 ? 1 : 0);
-        return reverse ? rotateLeft(input, Integer.toString(rotateSteps))
+        return reverse ? reverseRotatedBasedOnPosition(input, target)
                 : rotateRight(input, Integer.toString(rotateSteps));
 
+    }
+
+    static String reverseRotatedBasedOnPosition(String input, String target) {
+        String temp = input;
+        for (int i = 0; i < input.length(); i++) {
+            temp = rotateRight(temp, "1");
+            System.out.println("Checking: " + input + " == " + rotateBasedOnPosition(temp, target, false) + " iteration " + i);
+            if (input.equals(rotateBasedOnPosition(temp, target, false))) {
+                break;
+            }
+        }
+        return temp;
     }
 
     static String reverseSubString(String input, String operation) {
